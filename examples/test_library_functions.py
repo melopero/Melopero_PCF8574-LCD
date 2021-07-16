@@ -53,6 +53,7 @@ lcd.shift_right()
 utime.sleep(1)
 
 lcd.shift_left()
+utime.sleep(1)
 
 # set the display size
 lcd.set_display_size(2, 16)
