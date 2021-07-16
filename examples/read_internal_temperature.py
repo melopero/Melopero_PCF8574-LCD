@@ -1,4 +1,4 @@
-#In this basic example, the Pico will read its internal temperature and show it on the LCD diplay
+#In this basic example, the Raspberry Pi Pico will read its internal temperature and show it on the LCD diplay
 
 
 import machine
