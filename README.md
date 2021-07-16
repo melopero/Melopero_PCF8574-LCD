@@ -35,18 +35,18 @@ A MicroPython library for interfacing the <b>Raspberry Pi Pico</b> with the I2C 
 
 
 ### Install the library
-We’ve created a downloadable UF2 file to let you install MicroPython with our LCD library included more easily. 
-Download it here: 
-<br>www.melopero.com/melopero-pico-kit.uf2
-<br>Follow the instructions on the official book or on the Raspberry Pi Pico website (section "Getting Started MicroPython")to copy the uf2 file on your Pico: 
-<br>https://www.raspberrypi.org/documentation/rp2040/getting-started/#getting-started-with-micropython
+We’ve created a downloadable UF2 file to let you install MicroPython with our LCD library included more easily:
+<br>1. Download the uf2 file here: www.melopero.com/melopero-pico-kit.uf2 
+<br>2. Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer. Release the BOOTSEL button after your Pico is connected.
+<br>3. It will mount as a Mass Storage Device called RPI-RP2.
+<br>4. Drag and drop the MicroPython UF2 file onto the RPI-RP2 volume. Your Pico will reboot. You are now running MicroPython with our library included
 
 
 
 
 ## Example
-```C++
-//This is a basic example
+```MicroPython
+#In this basic example, the Pico will read its internal temperature and output on the LCD diplay
 
 
 import machine
@@ -72,4 +72,48 @@ while True:
   
 ```
 
+
+## Library Functions
+```MicroPython
+#create a new LCD object with default parameters
+lcd = mp.LCD() 
+
+#create a new LCD object with custom parameters
+lcd = mp.LCD(sda_pin=0, scl_pin=1, pcf_address=0x27, 
+lines=2, cols=16)
+
+#display a string
+lcd.output_string('Hello World!\n:)')
+
+#display a char and move the cursor forward 
+lcd.output_char('a')
+
+
+# clear the screen and set the cursor position to 0,0
+lcd.clear()
+
+# set the position of the cursor
+lcd.set_cursor_position(0,0)
+
+# cursor show/hide and blink functions 
+lcd.hide_cursor()
+lcd.show_cursor()
+lcd.blink_cursor_off()
+lcd.blink_cursor_on()
+
+# shift the text of 1 position
+lcd.shift_right()
+lcd.shift_left()
+
+# set the display size
+lcd.set_display_size(2, 16)
+
+# turn on/off the backlight
+lcd.backlight_off()
+lcd.backlight_on()
+
+# turn on/off the display
+lcd.display_off()
+lcd.display_on()
+```
 
